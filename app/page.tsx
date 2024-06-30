@@ -43,9 +43,8 @@ export default function Home() {
     }
 
     return (
-        <div className="relative min-h-screen gap-y-6">
+        <div className="relative min-h-screen gap-y-6 text-dark dark:text-white dark:bg-[#09090b] bg-white">
             <Navbar />
-            <Background />
             <main className="flex flex-col gap-y-4 px-4 my-10">
                 <Translator
                     isLoading={isLoading}

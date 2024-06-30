@@ -21,7 +21,7 @@ export default function Translator({ onChangeType, onChange, value, translation,
             <div className="flex flex-col gap-y-1 flex-1 max-w-[600px]">
                 <Label className="mb-2">Ingrese un {type === "number" ? "numeral" : "número"}</Label>
                 <Textarea
-                    className="w-full resize-none"
+                    className="w-full resize-none dark:bg-[#09090b]"
                     rows={8}
                     value={value}
                     onChange={onChange}
@@ -47,7 +47,7 @@ export default function Translator({ onChangeType, onChange, value, translation,
             <div className="flex-1 max-w-[600px]">
                 <Textarea
                     readOnly
-                    className="w-full resize-none"
+                    className="w-full resize-none dark:bg-[#09090b]"
                     rows={8}
                     value={translation}
                     placeholder={isLoading ? "Traduciendo..." : "Traducción"}
