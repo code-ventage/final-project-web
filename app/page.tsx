@@ -6,7 +6,7 @@ import Footer from "@/components/footer";
 import Translator from "@/components/translator";
 import Background from "@/components/background";
 import { Button } from "@/components/ui/button";
-import { GamepadIcon } from "lucide-react";
+import { GamepadIcon, PlayIcon } from "lucide-react";
 import { translateToNumeral, translateToNumber } from "@/services/translate";
 
 export default function Home() {
@@ -45,7 +45,7 @@ export default function Home() {
     return (
         <div className="relative min-h-screen gap-y-6">
             <Navbar />
-             <Background />
+            <Background />
             <main className="flex flex-col gap-y-4 px-4 my-10">
                 <Translator
                     isLoading={isLoading}
@@ -55,9 +55,16 @@ export default function Home() {
                     translation={translation ?? ""}
                     onChange={e => handleChange(e.target.value)}
                 />
+                <div className="text-center mt-10">
+                    <Button className="max-md:hidden" size="lg">
+                        <span>Jugar</span>
+                        <PlayIcon className="size-6 ml-2" />
+                    </Button>
+                </div>
+
             </main>
             <Button
-                className="md:hidden block absolute bottom-10 right-3"
+                className="md:hidden block absolute bottom-16 right-3"
             >
                 <GamepadIcon className="size-6" />
             </Button>

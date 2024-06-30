@@ -1,4 +1,4 @@
-This is a Number Translator App for Web Final Project - UCLV 2024
+# This is a Number Translator App for Web Final Project - UCLV 2024
 ## Getting Started
 
 First, run the development server:

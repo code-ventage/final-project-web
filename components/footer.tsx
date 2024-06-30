@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 
 export default function Footer() {
     return (
-        <footer className="fixed bottom-0 w-full flex items-center justify-between md:gap-x-4 py-3 px-4 text-sm text-gray-500 border-t border-gray-200 shadow-sm">
+        <footer className="fixed bottom-0 w-full flex items-center justify-between md:gap-x-4 py-2 px-4 text-sm text-gray-500 border-t border-gray-200 shadow-sm">
             <div>
-                <span className="font-medium">Trabajo Final de Web 2024 &copy;</span>
+                <span className="font-medium">Trabajo Final Web 2024 &copy;</span>
 
             </div>
 
