@@ -7,7 +7,7 @@ export default function Navbar() {
     const { theme, setTheme } = useTheme();
 
     return (
-        <header className="w-full flex items-center justify-between py-2 px-3 border-b shadow-sm">
+        <header className="w-full flex items-center justify-between dark:bg-[#09090b] py-2 px-3 border-b shadow-sm">
             <a href="/">
                 <span className="flex items-center gap-x-2 font-semibold text-xl md:text-3xl text-dark dark:text-light">
                     <BookAIcon className="size-6" />
