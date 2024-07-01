@@ -10,7 +10,7 @@ export default function UserMenu() {
     const { toast } = useToast()
 
     const logout = () => {
-        router.push('/auth/login')
+        router.push('/login')
         toast({
             title: 'Sesión cerrada correctamente.',
             duration: 3000,
@@ -21,7 +21,7 @@ export default function UserMenu() {
     return (
         <PopoverContent className="w-[200px] flex flex-col gap-y-2 dark:bg-[#09090b]">
             <Link
-                href="#"
+                href="/scores"
                 className="cursor-pointer w-full flex gap-x-2 items-center justify-between border-b pb-3"
             >
                 Puntuación

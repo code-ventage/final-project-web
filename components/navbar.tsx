@@ -57,7 +57,7 @@ export default function Navbar() {
                                     className="rounded-full"
                                     asChild
                                 >
-                                    <Link href="/auth/login">
+                                    <Link href="/login">
                                         <LogInIcon className="size-6" />
                                     </Link>
                                 </Button>

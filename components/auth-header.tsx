@@ -4,9 +4,9 @@ import { Button } from '@/components/ui/button'
 
 export default function AuthHeader() {
     return (
-        <header className="fixed top-0 w-full flex items-center justify-between p-5 border-b shadow-sm">
+        <header className="fixed top-0 w-full flex items-center justify-between py-2 px-3 border-b shadow-sm">
             <Link href="/">
-                <BookAIcon className="size-8" />
+                <BookAIcon className="size-6" />
             </Link>
 
             <Button
