@@ -15,13 +15,15 @@ interface Props {
 }
 
 export default function Translator({ onChangeType, onChange, value, translation, type, isLoading }: Props) {
-
     return (
         <div className="flex flex-col md:flex-row md:items-center md:justify-center gap-4">
             <div className="flex flex-col gap-y-1 flex-1 max-w-[600px]">
-                <Label className="mb-2">Ingrese un {type === "number" ? "numeral" : "número"}</Label>
+                <Label className="mb-1 font-semibold" htmlFor="to-translate">
+                    Ingrese un {type === "number" ? "numeral" : "número"}
+                </Label>
                 <Textarea
-                    className="w-full resize-none dark:bg-[#09090b]"
+                    id="to-translate"
+                    className="w-full resize-none dark:bg-[#09090b] dark:text-white"
                     rows={8}
                     value={value}
                     onChange={onChange}
@@ -47,7 +49,7 @@ export default function Translator({ onChangeType, onChange, value, translation,
             <div className="flex-1 max-w-[600px]">
                 <Textarea
                     readOnly
-                    className="w-full resize-none dark:bg-[#09090b]"
+                    className="w-full resize-none dark:bg-[#09090b] dark:text-white"
                     rows={8}
                     value={translation}
                     placeholder={isLoading ? "Traduciendo..." : "Traducción"}
