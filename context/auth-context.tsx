@@ -5,6 +5,7 @@ interface AuthContext {
   user: User | null
   setUser: React.Dispatch<React.SetStateAction<any>>
   isLoading: boolean
+  signup: (user: User) => Promise<AuthResponse | null>
   login: (user: User) => Promise<AuthResponse | null>
   logout: () => void
 }

@@ -17,7 +17,7 @@ export default function UserMenu() {
   }
 
   return (
-    <PopoverContent className="flex w-[250px] flex-col gap-y-2 dark:bg-[#09090b]">
+    <PopoverContent className="flex w-[250px] flex-col gap-y-2">
       <Link
         href="/scores"
         className="flex w-full cursor-pointer items-center justify-between gap-x-2 border-b pb-3"

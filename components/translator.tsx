@@ -35,7 +35,7 @@ export default function Translator({
         </Label>
         <Textarea
           id="to-translate"
-          className="w-full resize-none dark:bg-[#09090b] dark:text-white"
+          className="w-full resize-none"
           rows={8}
           value={value}
           onChange={onChange}
@@ -66,7 +66,7 @@ export default function Translator({
       <div className="max-w-[600px] flex-1 md:mt-6">
         <Textarea
           readOnly
-          className="w-full resize-none dark:bg-[#09090b] dark:text-white"
+          className="w-full resize-none"
           rows={8}
           value={translation}
           placeholder={isLoading ? 'Traduciendo...' : 'Traducción'}

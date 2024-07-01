@@ -1,5 +1,4 @@
 import { Toaster } from '@/components/ui/toaster'
-import Navbar from '@/components/navbar'
 import './globals.css'
 import '@fontsource-variable/inter'
 import { Providers } from './providers'
@@ -19,7 +18,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>{children}</Providers>
-
         <Toaster />
       </body>
     </html>

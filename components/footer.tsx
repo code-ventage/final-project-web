@@ -4,9 +4,9 @@ import { Button } from '@/components/ui/button'
 
 export default function Footer() {
   return (
-    <footer className="flex w-full items-center justify-between border-t px-4 py-1 text-sm text-gray-500 shadow-sm md:fixed md:bottom-0 md:gap-x-4">
+    <footer className="flex w-full items-center justify-between border-t px-4 py-1 text-sm shadow-sm md:fixed md:bottom-0 md:gap-x-4">
       <div>
-        <span className="text-dark font-medium dark:text-white">
+        <span className="text-dark font-medium">
           Trabajo Final Web 2024 &copy;
         </span>
       </div>
@@ -14,7 +14,7 @@ export default function Footer() {
       <Button
         variant="ghost"
         size="icon"
-        className="text-dark rounded-full dark:text-white"
+        className="text-dark rounded-full"
         asChild
       >
         <Link

@@ -1,14 +1,17 @@
 'use client'
 
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Footer from '@/components/footer'
 import Translator from '@/components/translator'
 import { Button } from '@/components/ui/button'
 import { GamepadIcon, PlayIcon } from 'lucide-react'
 import { translateToNumeral, translateToNumber } from '@/services/translate'
 import Navbar from '@/components/navbar'
+import Link from 'next/link'
+import AuthContext from '@/context/auth-context'
 
 export default function Home() {
+  const { user } = useContext(AuthContext)
   const [value, setValue] = useState('')
   const [translation, setTranslation] = useState<string | undefined>('')
   const [consultType, setConsultType] = useState<'letter' | 'number'>('letter')
@@ -42,7 +45,7 @@ export default function Home() {
   }
 
   return (
-    <div className="text-dark relative min-h-screen gap-y-6 bg-white dark:bg-[#09090b] dark:text-white">
+    <div className="text-dark relative min-h-screen gap-y-6">
       <Navbar />
       <main className="my-10 flex flex-col gap-y-4 px-4">
         <Translator
@@ -54,9 +57,16 @@ export default function Home() {
           onChange={(e) => handleChange(e.target.value)}
         />
         <div className="mt-10 text-center">
-          <Button className="max-md:hidden" size="lg">
-            <span>Jugar</span>
-            <PlayIcon className="ml-2 size-6" />
+          <Button className="max-md:hidden" size="lg" asChild>
+            <Link
+              href={{
+                pathname: user ? '/game' : '/login',
+                ...(user ? null : { query: { redirect: '/game' } }),
+              }}
+            >
+              Jugar
+              <PlayIcon className="ml-2 size-6" />
+            </Link>
           </Button>
         </div>
       </main>

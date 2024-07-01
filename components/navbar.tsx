@@ -7,25 +7,23 @@ import AuthContext from '@/context/auth-context'
 import { BookAIcon, EllipsisVertical, MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { useContext } from 'react'
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme()
   const { user } = useContext(AuthContext)
-  const pathname = usePathname()
 
   return (
-    <header className="flex w-full items-center justify-between border-b px-3 py-2 shadow-sm dark:bg-[#09090b]">
+    <header className="flex w-full items-center justify-between border-b px-3 py-2 shadow-sm">
       <Link href="/">
-        <span className="text-dark flex items-center gap-x-2 text-xl font-semibold dark:text-white md:text-2xl">
+        <span className="text-dark flex items-center gap-x-2 text-xl font-semibold md:text-2xl">
           <BookAIcon className="size-6" />
           Traductor
         </span>
       </Link>
       <nav className="flex items-center gap-x-1">
         <Button
-          className="text-dark rounded-full dark:text-white"
+          className="text-dark order-2 rounded-full"
           size="icon"
           variant="ghost"
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -42,7 +40,7 @@ export default function Navbar() {
               <Button
                 size="icon"
                 variant="ghost"
-                className="text-dark rounded-full dark:text-white"
+                className="text-dark order-3 rounded-full"
               >
                 <EllipsisVertical className="size-6" />
               </Button>
@@ -51,16 +49,28 @@ export default function Navbar() {
             <UserMenu />
           </Popover>
         ) : (
-          <Button variant="ghost" size="sm" className="border" asChild>
-            <Link
-              href={{
-                pathname: '/login',
-                query: { redirect: pathname },
-              }}
+          <div className="flex items-center gap-x-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-dark order-1 border"
             >
-              Inicia sesión
-            </Link>
-          </Button>
+              <Link href={{ pathname: '/register', query: { redirect: '/' } }}>
+                Crear cuenta
+              </Link>
+            </Button>
+
+            <Button size="sm" className="order-3 border" asChild>
+              <Link
+                href={{
+                  pathname: '/login',
+                  query: { redirect: '/' },
+                }}
+              >
+                Inicia sesión
+              </Link>
+            </Button>
+          </div>
         )}
       </nav>
     </header>

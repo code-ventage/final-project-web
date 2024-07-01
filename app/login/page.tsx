@@ -31,20 +31,20 @@ export default function LoginPage() {
       clearForm()
       toast({
         title: data.response.message,
-        duration: 3000,
+        duration: 2000,
       })
       router.push(params.get('redirect') ?? '/')
     } else {
       return toast({
         variant: 'destructive',
         title: data?.response.message,
-        duration: 3000,
+        duration: 2000,
       })
     }
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center dark:bg-[#09090b]">
+    <div className="flex min-h-screen items-center justify-center">
       <main className="flex w-full flex-col items-center justify-center px-5">
         <h1 className="mb-8 text-4xl font-bold">Iniciar sesión</h1>
         <form
@@ -53,22 +53,20 @@ export default function LoginPage() {
         >
           <div className="w-full">
             <Input
-              className="dark:bg-[#09090b]"
               placeholder="Nombre de usuario"
               required
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={e => setUsername(e.target.value)}
             />
           </div>
 
           <div className="w-full">
             <Input
               type="password"
-              className="dark:bg-[#09090b]"
               placeholder="Contraseña"
               required
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
             />
           </div>
 
@@ -89,7 +87,7 @@ export default function LoginPage() {
 
       <footer className="fixed bottom-0 flex w-full items-center justify-center border-t px-3 py-3 shadow-sm">
         <Link
-          href="/auth/register"
+          href="/register"
           className="font-medium text-blue-600 hover:underline"
         >
           No tienes cuenta? Crea una

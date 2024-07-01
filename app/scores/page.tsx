@@ -42,7 +42,7 @@ export default function Scores() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center gap-y-4 dark:bg-[#09090b]">
+    <div className="flex flex-col items-center justify-center gap-y-4">
       <Navbar />
       <main className="w-full px-4">
         <div className="relative">
