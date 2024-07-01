@@ -42,7 +42,7 @@ export default function Home() {
   }
 
   return (
-    <div className="text-dark relative min-h-screen gap-y-6 bg-white dark:text-white">
+    <div className="text-dark relative min-h-screen gap-y-6 bg-white dark:bg-[#09090b] dark:text-white">
       <Navbar />
       <main className="my-10 flex flex-col gap-y-4 px-4">
         <Translator

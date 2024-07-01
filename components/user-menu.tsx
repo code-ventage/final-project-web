@@ -5,36 +5,33 @@ import { PopoverContent } from '@/components/ui/popover'
 import { BoltIcon, LogOutIcon } from 'lucide-react'
 
 export default function UserMenu() {
+  const router = useRouter()
+  const { toast } = useToast()
 
-    const router = useRouter()
-    const { toast } = useToast()
+  const logout = () => {
+    router.push('/login')
+    toast({
+      title: 'Sesión cerrada correctamente.',
+      duration: 3000,
+    })
+  }
 
-    const logout = () => {
-        router.push('/login')
-        toast({
-            title: 'Sesión cerrada correctamente.',
-            duration: 3000,
-        })
-
-    }
-
-    return (
-        <PopoverContent className="w-[200px] flex flex-col gap-y-2 dark:bg-[#09090b]">
-            <Link
-                href="/scores"
-                className="cursor-pointer w-full flex gap-x-2 items-center justify-between border-b pb-3"
-            >
-                Puntuación
-                <BoltIcon className="size-6" />
-
-            </Link>
-            <span
-                onClick={() => logout()}
-                className="cursor-pointer w-full flex gap-x-2 items-center justify-between pt-2"
-            >
-                Cerrar sesión
-                <LogOutIcon className="size-6" />
-            </span>
-        </PopoverContent>
-    );
+  return (
+    <PopoverContent className="flex w-[250px] flex-col gap-y-2 dark:bg-[#09090b]">
+      <Link
+        href="/scores"
+        className="flex w-full cursor-pointer items-center justify-between gap-x-2 border-b pb-3"
+      >
+        Puntuación
+        <BoltIcon className="size-6" />
+      </Link>
+      <span
+        onClick={() => logout()}
+        className="flex w-full cursor-pointer items-center justify-between gap-x-2 pt-2"
+      >
+        Cerrar sesión
+        <LogOutIcon className="size-6" />
+      </span>
+    </PopoverContent>
+  )
 }

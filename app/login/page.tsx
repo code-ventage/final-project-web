@@ -2,12 +2,11 @@
 
 import { useState, useContext } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useToast } from '@/components/ui/use-toast'
 import { Loader } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import AuthHeader from '@/components/auth-header'
 import AuthContext from '@/context/auth-context'
 
 export default function LoginPage() {
@@ -16,6 +15,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState('')
   const router = useRouter()
   const { toast } = useToast()
+  const params = useSearchParams()
 
   const clearForm = () => {
     setUsername('')
@@ -33,7 +33,7 @@ export default function LoginPage() {
         title: data.response.message,
         duration: 3000,
       })
-      router.push('/')
+      router.push(params.get('redirect') ?? '/')
     } else {
       return toast({
         variant: 'destructive',
@@ -55,6 +55,7 @@ export default function LoginPage() {
             <Input
               className="dark:bg-[#09090b]"
               placeholder="Nombre de usuario"
+              required
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -65,6 +66,7 @@ export default function LoginPage() {
               type="password"
               className="dark:bg-[#09090b]"
               placeholder="Contraseña"
+              required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

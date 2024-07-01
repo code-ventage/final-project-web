@@ -29,13 +29,13 @@ export default function ScoresTable({ scores }: Props) {
   const [currentIndex, setCurrentIndex] = useState<number>(1)
 
   return (
-    <>
+    <section className="flex flex-col items-center justify-center">
       <Table>
         {/* <TableCaption>Puntuaciones de usuarios.</TableCaption> */}
         <TableHeader>
           <TableRow>
             <TableHead>Fecha</TableHead>
-            <TableHead>Nombre de usuario</TableHead>
+            <TableHead>Usuario</TableHead>
             <TableHead>Puntuación</TableHead>
           </TableRow>
         </TableHeader>
@@ -56,7 +56,7 @@ export default function ScoresTable({ scores }: Props) {
         </TableBody>
       </Table>
 
-      <Pagination className="mt-3">
+      <Pagination className="mt-3 select-none">
         <PaginationContent>
           <PaginationPrevious
             onClick={() => {
@@ -77,6 +77,6 @@ export default function ScoresTable({ scores }: Props) {
           />
         </PaginationContent>
       </Pagination>
-    </>
+    </section>
   )
 }
