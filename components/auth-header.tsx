@@ -10,11 +10,15 @@ export default function AuthHeader() {
             </Link>
 
             <Button
-                className="font-semibold"
+                className="border"
                 size="sm"
+                variant="ghost"
                 asChild
             >
-                <Link href="/auth/register">
+                <Link
+                    href="/auth/register"
+                    className="font-medium"
+                >
                     Crear cuenta
                 </Link>
             </Button>

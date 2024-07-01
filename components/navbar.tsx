@@ -1,16 +1,17 @@
 import Link from "next/link";
+import { useContext } from "react";
 import { useTheme } from "next-themes";
+import AuthContext from '@/context/auth-context'
 import { Popover, PopoverTrigger } from '@/components/ui/popover'
 import { Tooltip, TooltipProvider, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { MoonIcon, SunIcon, BookAIcon, EllipsisVertical, LogInIcon } from "lucide-react";
 import UserMenu from '@/components/user-menu'
 import { Button } from '@/components/ui/button'
-import { useAuth } from '@/hooks/useAuth'
 
 export default function Navbar() {
 
     const { theme, setTheme } = useTheme();
-    const { user } = useAuth();
+    const { user } = useContext(AuthContext);
 
     return (
         <header className="w-full flex items-center justify-between dark:bg-[#09090b] py-2 px-3 border-b shadow-sm">

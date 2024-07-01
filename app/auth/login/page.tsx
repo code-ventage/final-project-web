@@ -1,19 +1,18 @@
 "use client";
 
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useAuth } from '@/hooks/useAuth'
 import { useToast } from '@/components/ui/use-toast'
 import { Loader } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import AuthHeader from '@/components/auth-header'
-import type { AuthResponse } from '@/hooks/useAuth'
+import AuthContext from '@/context/auth-context'
 
 export default function LoginPage() {
 
-    const { login, isLoading, setUser } = useAuth();
+    const { login, isLoading, setUser } = useContext(AuthContext);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter();
@@ -27,24 +26,22 @@ export default function LoginPage() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const data = await login({ username, password })
-        console.log(data);
 
         if (data && data.response.status === '200') {
             setUser(data.response.data[0]);
-            router.push('/');
             clearForm();
             toast({
                 title: data.response.message,
                 duration: 3000
             })
-            return;
+            router.push('/');
+        } else {
+            return toast({
+                variant: 'destructive',
+                title: data?.response.message,
+                duration: 3000
+            });
         }
-
-        return toast({
-            variant: 'destructive',
-            title: data?.response.message,
-            duration: 3000
-        });
     }
 
     return (
@@ -89,8 +86,8 @@ export default function LoginPage() {
                 </form>
             </main>
 
-            <footer className="fixed bottom-0 w-full flex items-center justify-center py-4 px-3 border-t shadow-sm">
-                <Link href="/auth/register" className="text-blue-500 hover:underline">
+            <footer className="fixed bottom-0 w-full flex items-center justify-center py-9 px-3 border-t shadow-sm">
+                <Link href="/auth/register" className="font-medium text-blue-600 hover:underline">
                     No tienes cuenta? Crea una
                 </Link>
             </footer>
