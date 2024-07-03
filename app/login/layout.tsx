@@ -1,4 +1,4 @@
-import AuthHeader from '@/components/login-navbar'
+import AuthHeader from '@/components/navbar/login-navbar'
 
 export default function AuthLayout({
   children,

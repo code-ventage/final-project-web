@@ -1,15 +1,16 @@
 'use client'
 
 import { useContext, useState } from 'react'
-import SignUpNavbar from '@/components/signup-navbar'
+import SignUpNavbar from '@/components/navbar/signup-navbar'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import AuthContext from '@/context/auth-context'
 import { useToast } from '@/components/ui/use-toast'
 import { useRouter } from 'next/navigation'
+import { Loader, UserPlus } from 'lucide-react'
 
 export default function SignUpPage() {
-  const { signup } = useContext(AuthContext)
+  const { isLoading, signup } = useContext(AuthContext)
   const { toast } = useToast()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -72,7 +73,16 @@ export default function SignUpPage() {
           </div>
 
           <div className="w-full">
-            <Button className="w-full font-semibold">Crear cuenta</Button>
+            <Button className="w-full font-semibold">
+              {isLoading ? (
+                <Loader className="animate-spin mr-2 size-4" />
+              ) : (
+                <>
+                  <UserPlus className="mr-2 size-4" />
+                  <span>Crear cuenta</span>
+                </>
+              )}
+            </Button>
           </div>
         </form>
       </main>

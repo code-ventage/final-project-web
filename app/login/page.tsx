@@ -2,9 +2,9 @@
 
 import { useState, useContext } from 'react'
 import Link from 'next/link'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useToast } from '@/components/ui/use-toast'
-import { Loader } from 'lucide-react'
+import { KeyRound, Loader } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import AuthContext from '@/context/auth-context'
@@ -15,7 +15,6 @@ export default function LoginPage() {
   const [password, setPassword] = useState('')
   const router = useRouter()
   const { toast } = useToast()
-  const params = useSearchParams()
 
   const clearForm = () => {
     setUsername('')
@@ -29,15 +28,15 @@ export default function LoginPage() {
     if (data && data.response.status === '200') {
       setUser(data.response.data[0])
       clearForm()
+      router.push('/')
       toast({
-        title: data.response.message,
+        title: data.response.message ?? 'Sesión iniciada exitosamente.',
         duration: 2000,
       })
-      router.push(params.get('redirect') ?? '/')
     } else {
       return toast({
         variant: 'destructive',
-        title: data?.response.message,
+        title: data?.response.message ?? 'Credenciales incorrectas.',
         duration: 2000,
       })
     }
@@ -76,10 +75,17 @@ export default function LoginPage() {
               type="submit"
               disabled={isLoading}
             >
-              {isLoading && <Loader className="mr-2 size-6 animate-spin" />}
-              <span>
-                {isLoading ? 'Iniciando sesión...' : 'Iniciar sesión'}
-              </span>
+              {isLoading ? (
+                <>
+                  <Loader className="animate-spin mr-2 size-4" />
+                  <span>Iniciando sesión...</span>
+                </>
+              ) : (
+                <>
+                  <KeyRound className="mr-2 size-4" />
+                  <span>Iniciar sesión</span>
+                </>
+              )}
             </Button>
           </div>
         </form>
