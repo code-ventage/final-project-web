@@ -1,8 +1,8 @@
 import { Toaster } from '@/components/ui/toaster'
-import './globals.css'
-import '@fontsource-variable/inter'
 import { Providers } from './providers'
 import { Metadata } from 'next'
+import '@fontsource-variable/inter'
+import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Number Translator | Home',
