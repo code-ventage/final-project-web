@@ -36,8 +36,8 @@ export default function GameResults({
 
   return (
     <section className="flex w-full flex-col items-center gap-y-3">
-      <h1 className="text-5xl font-extrabold">Puntuación</h1>
-      <h2 className="text-3xl">
+      <h1 className="text-3xl font-extrabold">Puntuación</h1>
+      <h2 className="text-xl">
         <span className="font-bold">{score}</span> <span>pts</span>
       </h2>
       <div className="flex w-full max-w-[300px] gap-x-2">
