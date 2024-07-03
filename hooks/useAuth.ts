@@ -14,7 +14,8 @@ export interface AuthResponse {
   version: string
 }
 
-const BASE_URL = process.env.APP_URL ?? 'http://localhost:34545/user'
+const BASE_URL =
+  `${process.env.NEXT_PUBLIC_APP_URL}/user` ?? 'http://localhost:34545/user'
 
 export const useAuth = () => {
   const [user, setUser] = useState<User | null>(null)
