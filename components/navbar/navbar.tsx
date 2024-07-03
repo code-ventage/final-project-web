@@ -5,19 +5,12 @@ import { Popover, PopoverTrigger } from '@/components/ui/popover'
 import UserMenuLogged from '@/components/navbar/user-menu-logged'
 import UserMenuNotLogged from '@/components/navbar/user-menu-not-logged'
 import AuthContext from '@/context/auth-context'
-import {
-  BookAIcon,
-  EllipsisVertical,
-  MenuIcon,
-  MoonIcon,
-  SunIcon,
-} from 'lucide-react'
-import { useTheme } from 'next-themes'
+import { BookAIcon, EllipsisVertical, MenuIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useContext } from 'react'
+import { ModeToggle } from './mode-toggle'
 
 export default function Navbar() {
-  const { theme, setTheme } = useTheme()
   const { user } = useContext(AuthContext)
 
   return (
@@ -29,18 +22,8 @@ export default function Navbar() {
         </span>
       </Link>
       <nav className="flex items-center gap-x-1">
-        <Button
-          className="text-dark order-2 rounded-full"
-          size="icon"
-          variant="ghost"
-          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-        >
-          {theme === 'dark' ? (
-            <SunIcon className="size-6" />
-          ) : (
-            <MoonIcon className="size-6" />
-          )}
-        </Button>
+        <ModeToggle />
+
         {user ? (
           <Popover>
             <PopoverTrigger asChild>

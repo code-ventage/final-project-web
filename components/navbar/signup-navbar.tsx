@@ -1,6 +1,6 @@
-import { BookAIcon } from 'lucide-react'
 import Link from 'next/link'
-import { Button } from '../ui/button'
+import { BookAIcon } from 'lucide-react'
+import { buttonVariants } from '../ui/button'
 
 export default function SignUpNavbar() {
   return (
@@ -9,11 +9,16 @@ export default function SignUpNavbar() {
         <BookAIcon className="size-6" />
       </Link>
 
-      <Button className="border" variant="ghost" size="sm" asChild>
-        <Link href={{ pathname: '/login', query: { redirect: '/register' } }}>
-          Iniciar sesión
-        </Link>
-      </Button>
+      <Link
+        href={{ pathname: '/login', query: { redirect: '/register' } }}
+        className={buttonVariants({
+          variant: 'ghost',
+          size: 'sm',
+          className: 'border',
+        })}
+      >
+        Iniciar sesión
+      </Link>
     </header>
   )
 }

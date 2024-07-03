@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { BookAIcon } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 
 export default function AuthHeader() {
   return (
@@ -9,14 +9,16 @@ export default function AuthHeader() {
         <BookAIcon className="size-6" />
       </Link>
 
-      <Button className="border" size="sm" variant="ghost" asChild>
-        <Link
-          href={{ pathname: '/register', query: { redirect: '/login' } }}
-          className="font-medium"
-        >
-          Crear cuenta
-        </Link>
-      </Button>
+      <Link
+        href={{ pathname: '/register', query: { redirect: '/login' } }}
+        className={buttonVariants({
+          variant: 'ghost',
+          size: 'sm',
+          className: 'border font-medium',
+        })}
+      >
+        Crear cuenta
+      </Link>
     </header>
   )
 }
