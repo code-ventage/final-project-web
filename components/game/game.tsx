@@ -22,8 +22,8 @@ export default function Game({
       <CountdownCircleTimer
         isPlaying
         duration={60}
-        colors={['#228B22', '#FFAB40', '#FF5252']}
-        colorsTime={[60, 10, 0]}
+        colors={['#228B22', '#d4af37', '#FFAB40', '#FF5252']}
+        colorsTime={[60, 10, 5, 0]}
         onUpdate={remainingTime =>
           setState({ ...state, remainingTime: remainingTime })
         }
