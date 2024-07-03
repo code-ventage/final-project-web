@@ -64,6 +64,7 @@ export default function Scores() {
 
         <ScoresTable scores={filteredScores} />
       </main>
+
       <Footer />
     </div>
   )

@@ -46,7 +46,7 @@ export default function GamePage() {
     )
   }
   return (
-    <main className="flex w-full flex-col items-center md:justify-center">
+    <main className="flex min-h-screen w-full flex-col items-center justify-center">
       {views[gameStatus]}
     </main>
   )
