@@ -6,7 +6,7 @@
 2. Clonar el repositorio
 3. Instalar las dependencias con tu administrador de paquetes favorito
 4. Levantar el servidor de desarrollo
-5. Abrir el navegador en http://localhost:3000
+5. Abrir el navegador en <http://localhost:3000>
 
 ## Estilos
 
@@ -16,4 +16,4 @@
 ## Autores
 
 - Marcos Portales Ramos
-- Victor Palmero Valdez
+- Victor Palmero Valdes
