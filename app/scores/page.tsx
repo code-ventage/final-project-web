@@ -4,10 +4,11 @@ import { useContext, useEffect, useState } from 'react'
 import { SearchIcon } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import AuthContext from '@/context/auth-context'
-import { Score, ScoreResponse, getUserScores } from '@/services/scores'
+import { Score, GenericResponse, getUserScores } from '@/services/scores'
 import ScoresTable from '@/components/scores-table'
-import Navbar from '@/components/navbar'
+import Navbar from '@/components/navbar/navbar'
 import Footer from '@/components/footer'
+import Link from 'next/link'
 
 export default function Scores() {
   const { user } = useContext(AuthContext)
@@ -16,10 +17,11 @@ export default function Scores() {
 
   useEffect(() => {
     const fetchScores = async () => {
-      const scores = (await getUserScores()) as ScoreResponse
+      const scores = (await getUserScores()) as GenericResponse
       setScores(scores.response.data)
     }
 
+    if (!user) return
     fetchScores()
   }, [input, user])
 
@@ -35,7 +37,10 @@ export default function Scores() {
       <>
         <Navbar />
         <p className="mt-4 px-4">
-          Inicia sesión antes de que puedas ver esta página.
+          <Link className="text-blue-600" href="/login">
+            Inicia sesión
+          </Link>{' '}
+          para poder ver la puntuación de otros usuarios.
         </p>
       </>
     )
@@ -51,9 +56,9 @@ export default function Scores() {
           </div>
           <Input
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={e => setInput(e.target.value)}
             className="flex-1"
-            placeholder="Busca otros usuarios"
+            placeholder="Buscar usuarios"
           />
         </div>
 

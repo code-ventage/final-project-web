@@ -1,10 +1,17 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import { Popover, PopoverTrigger } from '@/components/ui/popover'
-import UserMenu from '@/components/user-menu'
+import UserMenuLogged from '@/components/navbar/user-menu-logged'
+import UserMenuNotLogged from '@/components/navbar/user-menu-not-logged'
 import AuthContext from '@/context/auth-context'
-import { BookAIcon, EllipsisVertical, MoonIcon, SunIcon } from 'lucide-react'
+import {
+  BookAIcon,
+  EllipsisVertical,
+  MenuIcon,
+  MoonIcon,
+  SunIcon,
+} from 'lucide-react'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import { useContext } from 'react'
@@ -45,32 +52,51 @@ export default function Navbar() {
                 <EllipsisVertical className="size-6" />
               </Button>
             </PopoverTrigger>
-            {/* UserMenu renders a PopoverContent */}
-            <UserMenu />
+            {/* UserMenu renders a PopoverContent when is logged in */}
+            <UserMenuLogged />
           </Popover>
         ) : (
-          <div className="flex items-center gap-x-2">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-dark order-1 border"
-            >
-              <Link href={{ pathname: '/register', query: { redirect: '/' } }}>
+          <>
+            <div className="hidden md:flex md:items-center md:gap-x-2">
+              <Link
+                href={{ pathname: '/register', query: { redirect: '/' } }}
+                className={buttonVariants({
+                  size: 'sm',
+                  variant: 'ghost',
+                  className: 'order-1 md:border',
+                })}
+              >
                 Crear cuenta
               </Link>
-            </Button>
 
-            <Button size="sm" className="order-3 border" asChild>
               <Link
                 href={{
                   pathname: '/login',
                   query: { redirect: '/' },
                 }}
+                className={buttonVariants({
+                  className: 'order-3 md:border',
+                })}
               >
-                Inicia sesión
+                Iniciar sesión
               </Link>
-            </Button>
-          </div>
+            </div>
+            {/* UserMenu renders a PopoverContent when is not logged in */}
+            <div className="order-3 inline-block md:hidden">
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="text-dark order-3 rounded-full"
+                  >
+                    <MenuIcon className="size-6" />
+                  </Button>
+                </PopoverTrigger>
+                <UserMenuNotLogged />
+              </Popover>
+            </div>
+          </>
         )}
       </nav>
     </header>
