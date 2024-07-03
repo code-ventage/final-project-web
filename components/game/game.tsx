@@ -44,7 +44,7 @@ export default function Game({
         <Input
           type="text"
           disabled={state.isLoadingNumber}
-          autoFocus={true}
+          autoFocus
           className="flex-1 pr-2"
           value={state.userInput}
           onChange={handleChange}
