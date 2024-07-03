@@ -44,7 +44,6 @@ export default function Navbar() {
               <Link
                 href={{ pathname: '/register', query: { redirect: '/' } }}
                 className={buttonVariants({
-                  size: 'sm',
                   variant: 'ghost',
                   className: 'order-1 md:border',
                 })}
