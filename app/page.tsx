@@ -3,7 +3,7 @@
 import { useContext, useState } from 'react'
 import Footer from '@/components/footer'
 import Translator from '@/components/translator'
-import { Button, buttonVariants } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 import { GamepadIcon, PlayIcon } from 'lucide-react'
 import { translateToNumeral, translateToNumber } from '@/services/translate'
 import Navbar from '@/components/navbar/navbar'
