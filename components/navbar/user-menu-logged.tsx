@@ -3,12 +3,16 @@ import { useRouter } from 'next/navigation'
 import { useToast } from '@/components/ui/use-toast'
 import { PopoverContent } from '@/components/ui/popover'
 import { BoltIcon, LogOutIcon } from 'lucide-react'
+import { useContext } from 'react'
+import AuthContext from '@/context/auth-context'
 
 export default function UserMenu() {
   const router = useRouter()
+  const { setUser } = useContext(AuthContext)
   const { toast } = useToast()
 
   const logout = () => {
+    setUser(null)
     router.push('/login')
     toast({
       title: 'Sesión cerrada correctamente.',
